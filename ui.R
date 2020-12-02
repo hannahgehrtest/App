@@ -1,15 +1,15 @@
 
 
-# installing packages
-install.packages(shiny)
-install.packages(haven)
-
 # loading packages
 library(shiny)
 library(haven)
+library(tidyverse)
+library(shinythemes)
 
 # ui
 ui <- fluidPage(
+  
+  theme = shinytheme("flatly"),
   
   # caption
   titlePanel("PGSF 2020"),
@@ -36,7 +36,12 @@ ui <- fluidPage(
       
     ),
     mainPanel(
-      # map
+      tabsetPanel(
+        tabPanel("First Tab",
+                 plotOutput("shrink_plot_re")
+        ),
+        tabPanel("Second Tab")
+      )
     )
   )
 )
