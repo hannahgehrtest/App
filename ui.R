@@ -1,37 +1,46 @@
 
 
-# installing packages
-install.packages(shiny)
-
-
 # loading packages
 library(shiny)
-
+library(haven)
+library(tidyverse)
+library(shinythemes)
 
 # ui
 ui <- fluidPage(
   
-  # caption
+  theme = shinytheme("flatly"),
+  
+  
   titlePanel("PGSF 2020"),
   
-  # layout
-  sidebarLayout(
+
+  tabsetPanel(
+    tabPanel(
+      "Tab", 
+    sidebarLayout(
     sidebarPanel(
-      
-      # legend
-      
-      
-      # select year
-      sliderInput(inputId = pgsf_app$start, 
-                  label = "Jahreszahl auswählen:",
-                  min = 1970,
-                  max = 1989,
-                  value = 1970),
-    
-      
-    ),
-    mainPanel(
-      # map
-    )
-  )
-)
+      selectInput(inputId = "kreis",
+                  label = "Kreis:",
+                  c("Potsdam" = "Potsdam",
+                    "Berlin" = "Berlin Ost")
+                  )
+                 ),
+    mainPanel(plotOutput("shrink_plot_re"))
+                 )
+             ),
+   tabPanel(
+    "Tab 2", 
+    sidebarLayout(
+      sidebarPanel(
+        sliderInput(inputId = "start", 
+                    label = "Jahreszahl auswählen:",
+                    min = 1970,
+                    max = 1989,
+                    value = 1970)),
+        mainPanel()
+       )
+     )
+   )
+ )
+
