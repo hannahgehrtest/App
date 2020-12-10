@@ -4,6 +4,9 @@
 library(shiny)
 library(haven)
 library(tidyverse)
+library(shinythemes)
+library(maps)
+library(mapproj)
 
 # server
 server <- function(input, output) {
@@ -12,7 +15,7 @@ server <- function(input, output) {
   #
   output$shrink_plot_re <- renderPlot({
     pgsf %>% 
-      filter(county_lab == input$kreis) %>%
+      filter(county_lab == input$kreis1) %>%
       ggplot(aes(x = midyear,
              y = eingtotal)) +
      geom_point() +
