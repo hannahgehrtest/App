@@ -1,10 +1,7 @@
 # PGSF 2020
 # preparing data set 
-
-# installing packages
-install.packages("haven")
-install.packages("dplyr")
-
+ 
+?sliderInput
 
 # loading packages
 library("haven")
