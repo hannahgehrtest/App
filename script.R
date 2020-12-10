@@ -1,7 +1,6 @@
 # PGSF 2020
 # preparing data set 
- 
-?sliderInput
+
 
 # loading packages
 library("haven")
