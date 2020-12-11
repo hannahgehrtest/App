@@ -7,22 +7,23 @@ library(tidyverse)
 library(shinythemes)
 library(maps)
 library(mapproj)
+library(shinyWidgets)
 
 # ui
-ui <- fluidPage(
+ui <- navbarPage( "PGSF 2020",
+  
+  
   
   # choosing theme
   theme = shinytheme("flatly"),
   
-  # title
-  titlePanel("PGSF 2020"),
   
-  # creating tabsets
-  tabsetPanel(
-    
+  
     # tab1
     tabPanel(
       "Kreisauswahl", 
+      # choosing slider color
+      setSliderColor(rep("#9999ff", 2), c(1,2)),
     sidebarLayout(
     sidebarPanel(
       selectInput(inputId = "kreis1",
@@ -44,15 +45,15 @@ ui <- fluidPage(
                     min = 1970,
                     max = 1989,
                     value = 1970,
-                    
-                    sep = "")),
+                    sep = "",
+                    )),
         mainPanel()
        )
      ),
    
    # tab3
    tabPanel(
-     "Karte",
+     "Karte", 
      sidebarLayout(
        sidebarPanel(
          sliderInput(inputId = "start3", 
@@ -60,15 +61,14 @@ ui <- fluidPage(
                      min = 1970,
                      max = 1989,
                      value = 1970,
-                     ticks = FALSE,
-                     sep = "",
-                     color = #D2691E)),
+                     sep = ""
+                     )),
          mainPanel()
        )
      )
-   )
    
    
-   )
+  )
+   
  
 
