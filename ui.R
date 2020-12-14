@@ -9,48 +9,21 @@ library(maps)
 library(mapproj)
 library(shinyWidgets)
 
+
+source('ui_kreisauswahl.R', local = TRUE, encoding = "utf-8")
+source('ui_jahresauswahl.R', local = TRUE, encoding = "utf-8")
+
+
 # ui
-ui <- navbarPage( "PGSF 2020",
-  
-  
-  
+ui <- navbarPage("PGSF 2020",
+
   # choosing theme
   theme = shinytheme("flatly"),
   
+  # Load tabPanels
+  kreisauswahl,
+  jahresauswahl,
   
-  
-    # tab1
-    tabPanel(
-      "Kreisauswahl", 
-      # choosing slider color
-      setSliderColor(rep("#9999ff", 2), c(1,2)),
-    sidebarLayout(
-    sidebarPanel(
-      selectInput(inputId = "kreis1",
-                  label = "Kreis auswählen:",
-                  c("Potsdam" = "Potsdam",
-                    "Berlin" = "Berlin Ost")
-                  )
-                 ),
-    mainPanel(plotOutput("shrink_plot_re"))
-                 )
-             ),
-   # tab2
-   tabPanel(
-    "Jahresauswahl", 
-    sidebarLayout(
-      sidebarPanel(
-        sliderInput(inputId = "start2", 
-                    label = "Jahr auswählen:",
-                    min = 1970,
-                    max = 1989,
-                    value = 1970,
-                    sep = "",
-                    )),
-        mainPanel()
-       )
-     ),
-   
    # tab3
    tabPanel(
      "Karte", 
@@ -66,8 +39,7 @@ ui <- navbarPage( "PGSF 2020",
          mainPanel()
        )
      )
-   
-   
+
   )
    
  
